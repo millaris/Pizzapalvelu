@@ -3,7 +3,7 @@
 // yhteyden muodostus tietokantaan
 function getTietokanta() {
     try {
-        $yhteys = new PDO("pgsql:dbname=millaris");
+        $yhteys = new PDO("pgsql:");
     } catch (PDOException $e) {
         die("VIRHE: " . $e->getMessage());
     }
