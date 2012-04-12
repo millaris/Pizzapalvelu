@@ -18,7 +18,7 @@ $tuote = $kysely->fetch();
         <title></title>
     </head>
     <body>
-            <form action="Asiakas.php" method="post">
+            <form action="Tuotelista.php" method="post">
             <input type="hidden" name="id" value="<?php echo $tuote['tuoteid'] ?>" />
             Nimi <input type="text" name="nimi" value="<?php echo $tuote['nimi'] ?>" />
             Kuva<input type="text" name="kuva" value="<?php echo $tuote['kuva'] ?>" />
