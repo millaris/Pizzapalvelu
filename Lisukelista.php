@@ -3,7 +3,7 @@
 require_once "tietokanta.php";
 $yhteys = getTietokanta();
 
-//if ($_POST["nimi"] != NULL) {
+if ($_POST["nimi"] != NULL) {
     if ($_POST["id"] != NULL) {
 
         
@@ -25,7 +25,7 @@ $yhteys = getTietokanta();
     $kysely1->execute(array($nimi, $hinta));
 
     echo 'OK';
-  //  }
+   }
 
     }
     
@@ -52,6 +52,7 @@ $tulokset = $kysely->fetchAll();
                     <td><?php echo $lisuke['hinta'] ?></td>
                      <td><a href="Lisuke.php?id=<?php echo $lisuke['lisukeid'] ?>">edit</a></td>
                 </tr>
+             
             <?php endforeach; ?>
         </table>
 
