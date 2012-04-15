@@ -5,7 +5,7 @@ require_once "tietokanta.php";
 $yhteys = getTietokanta();
 
 
-$kysely = $yhteys->prepare("INSERT INTO Asiakas (Nimi, Puhelin, Mustalista) VALUES (?, ?, ?)");
+$kysely = $yhteys->prepare("INSERT INTO Asiakas (Nimi, Puhelin, Mustalista) VALUES (?, ?, ?) returning asiakasnro");
 
 
 
@@ -15,9 +15,10 @@ $puhelin = $_POST["puhelinnumero"];
 $id = $_POST["id"];
 
 $kysely->execute(array($nimi, $puhelin, 0));
+$asiakasnro = $kysely->fetch();
 
-echo 'Kiitos rekisteröitymisestä. Tietosi on tallennettu. Asiakasnumerosi on';
-echo $id['id']
-
-
+echo 'Kiitos rekisteröitymisestä. Tietosi on tallennettu. Asiakasnumerosi on ';
+echo $asiakasnro[0];
 ?>
+        <p><a href="Etusivu.php">Etusivulle</a> </p>
+         <p><a href="Asiakas1.php">Kirjaudu sisään</a></p>

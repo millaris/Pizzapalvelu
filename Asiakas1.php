@@ -11,7 +11,7 @@
             Nimi <input type="text" name="nimi" />
             Puhelinnumero <input type="text" name="puhelinnumero" />
             <input type="hidden" name="id" />
-            <input type="submit" value="Lisää" />
+            <input type="submit" value="Tallenna" />
          </form>
     </body>
 </html>
