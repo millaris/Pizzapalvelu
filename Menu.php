@@ -17,6 +17,8 @@ $lista = array();
     </head>
     <body>
         <h1>Menu</h1>
+        
+        <form action="TilauksenLisukkeet.php" method="post">
         <table>
             <tr>
                 <td>Nimi</td>
@@ -28,20 +30,23 @@ $lista = array();
             <?php foreach ($tulokset as $tuote): ?>
 
                 <tr>
-                <form action="TilauksenLisukkeet.php" method="post">
+                
                     <td><?php echo $tuote['nimi'] ?></td>
                     <td><?php echo $tuote['kuva'] ?></td>
                     <td><?php echo $tuote['tekstikuvaus'] ?></td>
                     <td><?php echo $tuote['tyyppi'] ?></td>
-                    <td> <a href="TilauksenLisukkeet.php"></a><input type="checkbox" name="lista[]" value= "$tuote['tuoteid']"> </td>
-                </form>
+                    <td><input type="hidden" name="lista[]" value= "<?php echo $tuote['tuoteid']?>">
+                        <input type="text" name="maara[]">
+                    </td>
+              
             </tr>
         <?php endforeach; ?>
 
     </table>
+            <input type ="submit" value ="Jatka">
+              </form>
 
 
-    <a href="TilauksenLisukkeet.php">Jatka</a>
 </body>
 
 </html>
