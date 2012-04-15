@@ -3,6 +3,13 @@ require_once "tietokanta.php";
 
 $yhteys = getTietokanta();
 
+$deleteid = $_GET["deleteid"];
+
+if($deleteid != NULL){
+    $kysely3 = $yhteys->prepare("DELETE FROM Tuote WHERE $deleteid = Tuoteid");
+    $kysely3->execute();
+}
+
 if ($_POST["nimi"] != NULL) {
     if ($_POST["id"] != NULL) {
 
@@ -13,12 +20,12 @@ if ($_POST["nimi"] != NULL) {
         $tyyppi = $_POST["tyyppi"];
         $idd = $_POST["id"];
 
-        $kysely2 = $yhteys->prepare("UPDATE Tuote SET Nimi = ?, Kuva = ?, Tekstikuvaus = ?, Tyyppi = ? WHERE Tuoteid = ? ");
+        $kysely2 = $yhteys->prepare("UPDATE Tuote SET nimi = ?, kuva = ?, tekstikuvaus = ?, tyyppi = ? WHERE tuoteid = ? ");
 
         
         $kysely2->execute(array($nimi, $kuva, $tekstikuvaus, $tyyppi, $idd));
 
-        echo 'OK';
+         echo 'OK';
     }
     else{
 
@@ -61,10 +68,13 @@ $tulokset = $kysely->fetchAll();
                     <td><?php echo $tuote['kuva'] ?></td>
                     <td><?php echo $tuote['tekstikuvaus'] ?></td>
                     <td><?php echo $tuote['tyyppi'] ?></td>
-                    <td><a href="Tuote.php?id=<?php echo $tuote['tuoteid'] ?>">edit</a></td>
+                    <td><a href="Tuote.php?id=<?php echo $tuote['tuoteid'] ?>">Muokkaa</a></td>
+                    <td><a href="Tuotelista.php?deleteid=<?php echo $tuote['tuoteid'] ?>">Poista</a></td>
                 </tr>
             <?php endforeach; ?>
         </table>
+        <br>
+        <a href =" Tuote.php">Lisää tuote</a>
 
     </body>
 
