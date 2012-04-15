@@ -10,6 +10,7 @@
         <form action="Asiakas.php" method="post">
             Nimi <input type="text" name="nimi" />
             Puhelinnumero <input type="text" name="puhelinnumero" />
+            <input type="hidden" name="id" />
             <input type="submit" value="Lisää" />
          </form>
     </body>

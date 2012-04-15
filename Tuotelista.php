@@ -39,7 +39,6 @@ if ($_POST["nimi"] != NULL) {
 
     $kysely1->execute(array($nimi, $kuva, $tekstikuvaus, $tyyppi));
 
-    echo 'OK';
     }
 }
 
