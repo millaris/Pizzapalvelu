@@ -8,7 +8,6 @@ $kysely->execute();
 
 $tulokset = $kysely->fetchAll();
 
-$lista = array();
 
 ?>
 <html>

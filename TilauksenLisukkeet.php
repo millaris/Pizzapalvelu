@@ -1,37 +1,65 @@
 <?php
-
 require_once "tietokanta.php";
 
 $yhteys = getTietokanta();
 
-//if (empty($_POST["lista"])) {
-//    echo "Et valinnut mitään tuotetta!";
-//} else {
-    $lista = $_POST["lista"];
-    $maara = $_POST["maara"];
-    
-    echo "<p>Valitsit seuraavat tuotteet:</p>";
-    //echo "<ul>";
-    for($i=0; $i < count($lista); $i++)
-    {
-        if ($maara[$i] != NULL)
-        {
-            echo $lista[$i];
-            echo "\t\t";
-            echo $maara[$i];
-            echo "<br \>";
-        }
-    }
-    //foreach ($lista as $tuote) {
-        
-      // echo "<li>{$tuote}";
-        $kysely = $yhteys->prepare("select * from Lisuke");
-        $kysely->execute();
+$kysely1 = $yhteys->prepare("select Nimi from Lisuke");
+$kysely1->execute();
 
-//        $tulokset = $kysely->fetchAll();
- //   }
-//    echo "</ul>";
-//}
+$lisukkeet = $kysely1->fetchAll();
 
-
+$lista = $_POST["lista"];
+$maara = $_POST["maara"];
 ?>
+<html>
+    <head>
+        <title>Menu</title>
+    </head>
+    <body>
+        <p>Valitse pizzoihisi lisukkeet:</p>
+        <form action ="TilauksenVarmistus.php" method="post">
+
+        <table>
+
+            <?php
+            for ($i = 0; $i < count($lista); $i++) {
+                if ($maara[$i] != NULL && $maara[$i] != 0) {
+
+                    $kysely = $yhteys->prepare("select Nimi from Tuote WHERE Tuoteid = $lista[$i]");
+                    $kysely->execute();
+                    $tuotteennimi = $kysely->fetch();
+
+                    for ($j = 0; $j < $maara[$i]; $j++) {
+                        ?>
+                        <tr>
+                            <td colspan="2"><h3><?php echo $tuotteennimi['nimi'] ?></h3></td>
+                        </tr>
+                        <?php 
+                        $luku = 0;
+                        foreach ($lisukkeet as $lisu): 
+                        $luku++
+                            ?>
+
+                            <tr>
+                                <td> <?php echo $lisu['nimi'] ?> </td>    
+                                <td> <input type="checkbox" name="lista[]" value="<?php echo $luku ?>"> </td>
+
+                            </tr>
+
+
+                        <?php
+                        endforeach;
+                    }
+                }
+            }
+           
+            ?>
+                            
+        </table>
+            <input type="submit" value ="Jatka"/>
+
+        </form>
+    </body>
+
+</html>
+
