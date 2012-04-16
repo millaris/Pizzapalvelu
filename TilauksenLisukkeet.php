@@ -42,7 +42,7 @@ $maara = $_POST["maara"];
 
                             <tr>
                                 <td> <?php echo $lisu['nimi'] ?> </td>    
-                                <td> <input type="checkbox" name="lista[]" value="<?php echo $luku ?>"> </td>
+                                <td> <input type="checkbox" name="lista[$i][]" value="<?php echo $luku ?>"> </td>
 
                             </tr>
 
