@@ -4,7 +4,7 @@
     <title>Kirjautuminen</title>
   </head>
   <body>
-    <form action="sisaan.php" method="post">
+    <form action="Sisaan.php" method="post">
       Asiakasnumero:
       
       <input type="text" name="asiakasnro"> <br>
