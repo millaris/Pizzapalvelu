@@ -9,7 +9,7 @@
     <body>
         <form action="Asiakas.php" method="post">
             Nimi <input type="text" name="nimi" />
-            Puhelinnumero <input type="text" name="puhelinnumero" />
+            Puhelinnumero <input type="integer" name="puhelinnumero" />
             <input type="hidden" name="id" />
             <input type="submit" value="Tallenna" />
          </form>

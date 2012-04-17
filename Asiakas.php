@@ -19,6 +19,7 @@ $asiakasnro = $kysely->fetch();
 
 echo 'Kiitos rekisteröitymisestä. Tietosi on tallennettu. Asiakasnumerosi on ';
 echo $asiakasnro[0];
+echo 'Voit kirjautua sisään antamalla asiakasnumerosi ja puhlinnumerosi.'
 ?>
         <p><a href="Etusivu.php">Etusivulle</a> </p>
          <p><a href="Asiakas1.php">Kirjaudu sisään</a></p>
