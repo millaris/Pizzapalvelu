@@ -14,8 +14,9 @@ $tulokset = $kysely->fetchAll();
     <head>
         <title>Menu</title>
     </head>
-    <body>
-        <h1>Menu</h1>
+    <body BACKGROUND="pizza.jpg"
+        
+        <h1><FONT SIZE = "20 "COLOR = "red"> Menu <FONT></h1>
         
         <form action="TilauksenLisukkeet.php" method="post">
         <table>
@@ -35,8 +36,20 @@ $tulokset = $kysely->fetchAll();
                     <td><?php echo $tuote['tekstikuvaus'] ?></td>
                     <td><?php echo $tuote['tyyppi'] ?></td>
                     <td><input type="hidden" name="lista[]" value= "<?php echo $tuote['tuoteid']?>">
-                        <input type="text" name="maara[]">
+                        <select name="maara[]">
+                            <option value="0"> 0
+                            <option value="1"> 1
+                            <option value="2"> 2
+                            <option value="3"> 3
+                            <option value="4"> 4
+                            <option value="5"> 5
+                            <option value="6"> 6
+                            <option value="7"> 7
+                            <option value="8"> 8
+                            <option value="9"> 9
+                            <option value="10"> 10
                     </td>
+                    
               
             </tr>
         <?php endforeach; ?>

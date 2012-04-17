@@ -69,6 +69,7 @@ $tulokset = $kysely->fetchAll();
                     <td><?php echo $tuote['tyyppi'] ?></td>
                     <td><a href="Tuote.php?id=<?php echo $tuote['tuoteid'] ?>">Muokkaa</a></td>
                     <td><a href="Tuotelista.php?deleteid=<?php echo $tuote['tuoteid'] ?>">Poista</a></td>
+                    <td><a href="Hinta.php?id=<?php echo $tuote['tuoteid'] ?>">Muuta</a></td>
                 </tr>
             <?php endforeach; ?>
         </table>
