@@ -16,7 +16,7 @@
         <h3>Linkit</h3>
         <p><a href="Asiakas1.php">Rekisteröidy</a> </p>
          <p><a href="Menu.php">Menu</a></p>
-         <p><a href="SisaanKirjautuminen.php">Kirjaudu sisään</a></p>
+         <p><a href="Kirjautuminen.php">Kirjaudu sisään</a></p>
          <p><a href="Yritysinfo.php">Yritysinfo</a></p>
 
 

@@ -1,6 +1,6 @@
 <?php
 
-require_once "tietokanta.php";
+require_once "../tietokanta.php";
 
 $yhteys = getTietokanta();
 
@@ -39,7 +39,7 @@ $tulokset = $kysely->fetchAll();
                     <td><?php echo $tu['asiakasnro'] ?></td>
                     <td><?php echo $tu['nimi'] ?></td>
                     <td><?php echo $tu['puhelin'] ?></td>
-                    <td><?php echo $tu['mustalista'] ?></td>
+                    <td><?php if ($tu['mustalista']) echo 'Joo'; else echo 'Ei'; ?></td>
                     <td><a href="Asiakaslista.php?deleteid=<?php echo $tu['asiakasnro'] ?>">Poista</a></td>
                     
                 </tr>
