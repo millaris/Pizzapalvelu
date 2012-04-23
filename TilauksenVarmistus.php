@@ -1,14 +1,29 @@
 <?php
-
-
 $lista = $_POST["lista"];
-echo $lista;
-//echo $lista[0][0];
+$pizza = $_POST["pizza"];
+$listaname = $_POST["toppingname"];
+$pizzaname = $_POST["pizzaName"];
 
-//for ($i = 0; $i < count($lista); $i++) {
-//    echo $lista[$i];
 
-foreach ($lista as $item){
-    echo $item[0];
+for ($i = 0; $i < count($pizza); $i++)
+{
+    echo $pizza[$i];
+    echo "  ";
+    foreach($lista[$i] as $item){
+        echo $item;
+        echo " <br /> ";
+    }    
 }
+echo " <br /> ";
+echo " <br /> ";
+for ($i = 0; $i < count($pizzaname); $i++)
+{
+    echo $pizzaname[$i];
+    echo "  ";
+    foreach($listaname[$i] as $item){
+        echo $item;
+        echo " <br /> ";
+    }    
+}
+
 ?>

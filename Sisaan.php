@@ -17,7 +17,7 @@ $tulokset = $kysely->fetch();
 
 
 if($tulokset != NULL){
-    $_SESSION["kayttaja"] = $asiakasnro;
+    $_SESSION["kayttaja"] = $asiakas;
         header("Location: Etusivu.php");
         die();
 }
@@ -25,4 +25,4 @@ if($tulokset != NULL){
 
 ?>
 <p>Tunnus tai salasana on väärin!</p>
-<p><a href="Kirjautuminen.html">Takaisin</a></p>
+<p><a href="Kirjautuminen.php">Takaisin</a></p>

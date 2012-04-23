@@ -7,11 +7,27 @@
         <title></title>
     </head>
     <body>
+        <table
+            <tr>
         <form action="Asiakas.php" method="post">
-            Nimi <input type="text" name="nimi" />
-            Puhelinnumero <input type="integer" name="puhelinnumero" />
+                <td>Nimi</td>
+                <td>Puhelinnumero</td>
+                <td>Osoite</td>
+                <td>Postinumero</td>
+                <td>Kaupunki</td>
+        </tr>
+        <tr>
+            <td><input type="text" name="nimi" /></td>
+            <td><input type="integer" name="puhelinnumero" /> </td>
+            <td><input type="text" name="osoite" /> </td>
+            <td><input type="integer" name="postinumero" /> </td>
+            <td><input type="text" name="kaupunki" /> </td>
+        </tr>
+        <tr>
             <input type="hidden" name="id" />
-            <input type="submit" value="Tallenna" />
+            <td><input type="submit" value="Tallenna" /> </td>
+        </tr>
          </form>
+        </table>
     </body>
 </html>

@@ -5,60 +5,71 @@ $yhteys = getTietokanta();
 
 $kysely = $yhteys->prepare("select * from tuote");
 $kysely->execute();
+$kysely2 = $yhteys->prepare("select * from lisuke");
+$kysely2->execute();
 
 $tulokset = $kysely->fetchAll();
-
-
+$lisuke = $kysely2->fetchAll();
 ?>
 <html>
     <head>
         <title>Menu</title>
     </head>
     <body BACKGROUND="pizza.jpg"
-        
-        <h1><FONT SIZE = "20 "COLOR = "red"> Menu <FONT></h1>
-        
-        <form action="TilauksenLisukkeet.php" method="post">
-        <table>
+
+          <h3><FONT SIZE ="14" COLOR = "red"> Menu </FONT></h3>
+
+
+        <table width ="80%">
             <tr>
-                <td>Nimi</td>
-                <td>Kuva</td>
-                <td>Tekstikuvaus</td>
-                <td>Tyyppi</td>
-                <td>Valitse</td>
+                <td width="25%">Nimi</td>
+                <td width="25%">Kuva</td>
+                <td width="25%">Tekstikuvaus</td>
+                <td width="25%">Tyyppi</td>
+
             </tr>
-            <?php foreach ($tulokset as $tuote): ?>
+<?php foreach ($tulokset as $tuote): ?>
 
                 <tr>
-                
+
                     <td><?php echo $tuote['nimi'] ?></td>
                     <td><?php echo $tuote['kuva'] ?></td>
                     <td><?php echo $tuote['tekstikuvaus'] ?></td>
                     <td><?php echo $tuote['tyyppi'] ?></td>
-                    <td><input type="hidden" name="lista[]" value= "<?php echo $tuote['tuoteid']?>">
-                        <select name="maara[]">
-                            <option value="0"> 0
-                            <option value="1"> 1
-                            <option value="2"> 2
-                            <option value="3"> 3
-                            <option value="4"> 4
-                            <option value="5"> 5
-                            <option value="6"> 6
-                            <option value="7"> 7
-                            <option value="8"> 8
-                            <option value="9"> 9
-                            <option value="10"> 10
-                    </td>
-                    
-              
+
+                </tr>
+<?php endforeach; ?>
+ <tr>
+                <td colspan="4">&nbsp;</td>
             </tr>
-        <?php endforeach; ?>
+            <tr>
+                <td colspan="4"> <h2>Pizzojen lisukkeet: </h2></td>
+            </tr>
+            <tr>
+<?php foreach ($lisuke as $tuote): ?>
 
-    </table>
-            <input type ="submit" value ="Jatka">
-              </form>
+                <tr>
+
+                    <td><?php echo $tuote['nimi'] ?></td>
+                    <td><?php echo $tuote['hinta'] ?></td>
+                    <td colspan="2"></td>
+
+<?php endforeach; ?>
+            </tr>
+            <tr>
+                <td> <a href="Etusivu.php" >Etusivulle</a>  </td>
+                <td colspan="3"></td>
+            </tr>
+            <tr>
+                <td> <a href="Kirjautuminen.php" >Kirjaudu</a> </td>
+                <td colspan="3"></td>
+            </tr>
 
 
-</body>
+        </table>
+
+
+
+    </body>
 
 </html>
