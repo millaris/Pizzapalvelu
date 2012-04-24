@@ -55,12 +55,12 @@ $tulokset = $kysely->fetchAll();
     </head>
     <body>
         <h1>Tuotteet</h1>
-        <table>
+        <table width ="80%">
             <tr>
-                <td>Nimi</td>
-                <td>Kuva</td>
-                <td>Tekstikuvaus</td>
-                <td>Tyyppi</td>
+                <td width="25%"><h3>Nimi</h3></td>
+                <td width="25%"><h3>Kuva</h3></td>
+                <td width="35%"><h3>Tekstikuvaus</h3></td>
+                <td width="15%"><h3>Tyyppi</h3></td>
             </tr>
             <?php foreach ($tulokset as $tuote): ?>
 
@@ -77,6 +77,7 @@ $tulokset = $kysely->fetchAll();
         </table>
         <br>
         <a href =" Tuote.php">Lisää tuote</a>
+        <a href ="Etusivu.php">Etusivulle</a>
 
     </body>
 

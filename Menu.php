@@ -15,17 +15,19 @@ $lisuke = $kysely2->fetchAll();
     <head>
         <title>Menu</title>
     </head>
-    <body BACKGROUND="pizza.jpg"
+    <body BACKGROUND="pizza3(1).jpg"
 
           <h3><FONT SIZE ="14" COLOR = "red"> Menu </FONT></h3>
 
 
         <table width ="80%">
             <tr>
-                <td width="25%">Nimi</td>
-                <td width="25%">Kuva</td>
-                <td width="25%">Tekstikuvaus</td>
-                <td width="25%">Tyyppi</td>
+            
+                <td width="25%"><h3>Nimi</h3></td> 
+                <td width="25%"><h3>Kuva</h3></td>
+                <td width="25%"><h3>Tekstikuvaus</h3></td>
+                <td width="25%"><h3>Tyyppi</h3></td>
+           
 
             </tr>
 <?php foreach ($tulokset as $tuote): ?>
@@ -55,6 +57,9 @@ $lisuke = $kysely2->fetchAll();
                     <td colspan="2"></td>
 
 <?php endforeach; ?>
+            </tr>
+            <tr> 
+             <td colspan="4">&nbsp;</td>
             </tr>
             <tr>
                 <td> <a href="Etusivu.php" >Etusivulle</a>  </td>

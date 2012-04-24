@@ -48,8 +48,8 @@ $tulokset = $kysely->fetchAll();
         <h1>Lisukkeet</h1>
         <table>
             <tr>
-                <td>Nimi</td>
-                <td>Hinta</td>
+                <td><h3>Nimi</h3></td>
+                <td><h3>Hinta</h3></td>
             </tr>
 <?php foreach ($tulokset as $lisuke): ?>
 
@@ -64,6 +64,7 @@ $tulokset = $kysely->fetchAll();
         </table>
          <br>
         <a href ="Lisuke.php">Lisää lisuke</a>
+        <a href ="Etusivu.php">Etusivulle</a>
 
     </body>
 

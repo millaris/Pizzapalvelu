@@ -4,7 +4,7 @@
     <title>Kirjaudu</title>
   </head>
   <body>
-    <form action="Etusivu.php" method="post">
+    <form action="Sisaan.php" method="post">
       Käyttäjätunus:
       
       <input type="text" name="kayttajatunus"> <br>

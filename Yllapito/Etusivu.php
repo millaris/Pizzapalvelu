@@ -8,7 +8,7 @@
     <head>
         <title>Ylläpito</title>
     </head>
-    <body BGCOLOR="blue">
+    <body BGCOLOR="grey">
         <MARQUEE DIRECTION="LEFT" BEHAVIOR ="ALTERNATE" scrollamount ="10" loop="3"> <FONT SIZE = "30"COLOR = "purple"> <B>Pirkon Pizzapalvelu</B> </FONT></MARQUEE>
         <h2>Etusivu</h2>
         

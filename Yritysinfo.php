@@ -13,9 +13,10 @@
         <h1>Pirkon Pizzapalvelu</h1>
         <h2>Yritysinfo</h2>
         
-        <p>Pirkon pizzapalvelu on Pitäjämäessä toimiva siisti ja upea pizzaravintola. Meiltä 
+        <p>Pirkon pizzapalvelu on Pitäjänmäessä toimiva siisti ja upea pizzaravintola. Meiltä 
         voit tilata puhelimen ja internetin välityksellä aterioita kotiin tai tulla paikan päälle 
         nauttimaan Pirkon antimia.</p>
+        <p>Toimitamme pizzoja Pitäjänmäkeen ja Leppävaaraan.</p>
         <p>Osoite: Pitäjämäentie 3</p>
         <p>Puhelinnro: 12344556566</p>
        

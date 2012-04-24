@@ -48,6 +48,8 @@ $tulokset = $kysely->fetchAll();
         </table>
         <br>
         
+        <a href="Etusivu.php">Etusivulle</a>
+        
 
     </body>
 
