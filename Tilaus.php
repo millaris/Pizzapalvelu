@@ -17,7 +17,7 @@ $tulokset = $kysely->fetchAll();
     <head>
         <title>Menu</title>
     </head>
-    <body BACKGROUND="pizza.jpg"
+    <body BACKGROUND="pizza3(1).jpg"
         
         <h1><FONT SIZE = "20 "COLOR = "red"> Menu <FONT></h1>
         
