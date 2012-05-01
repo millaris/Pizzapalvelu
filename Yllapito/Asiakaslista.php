@@ -33,6 +33,9 @@ $tulokset = $kysely->fetchAll();
                 <td>Nimi</td>
                 <td>Puhelinnro</td>
                 <td>Mustalista</td>
+                <td>Osoite</td>
+                <td>Postinumero</td>
+                <td>Kaupunki</td>
             </tr>
             <?php foreach ($tulokset as $tu): ?>
 
@@ -41,6 +44,9 @@ $tulokset = $kysely->fetchAll();
                     <td><?php echo $tu['nimi'] ?></td>
                     <td><?php echo $tu['puhelin'] ?></td>
                     <td><?php if ($tu['mustalista']) echo 'Joo'; else echo 'Ei'; ?></td>
+                    <td><?php echo $tu['osoite'] ?></td>
+                    <td><?php echo $tu['postinumero'] ?></td>
+                    <td><?php echo $tu['kaupunki'] ?></td>
                     <td><a href="Asiakaslista.php?deleteid=<?php echo $tu['asiakasnro'] ?>">Poista</a></td>
                     
                 </tr>

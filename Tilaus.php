@@ -6,7 +6,8 @@ require_once "tietokanta.php";
 
 $yhteys = getTietokanta();
 
-$kysely = $yhteys->prepare("select * from tuote");
+$kysely = $yhteys->prepare("select t.*, h.hinta as lounashinta, hh.hinta from tuote t join hinta h on h.tuoteid = t.tuoteid and h.onkolounas = true
+join hinta hh on hh.tuoteid = t.tuoteid and hh.onkolounas = false");
 $kysely->execute();
 
 $tulokset = $kysely->fetchAll();
@@ -24,11 +25,13 @@ $tulokset = $kysely->fetchAll();
         <form action="TilauksenLisukkeet.php" method="post">
         <table>
             <tr>
-                <td>Nimi</td>
-                <td>Kuva</td>
-                <td>Tekstikuvaus</td>
-                <td>Tyyppi</td>
-                <td>Valitse</td>
+                <td width="15%"><h3>Nimi</h3></td> 
+                <td width="10%"><h3>Kuva</h3></td>
+                <td width="25%"><h3>Tekstikuvaus</h3></td>
+                <td width="15%"><h3>Tyyppi</h3></td>
+                <td width="15%"><h3>Normaali hinta</h3></td>
+                <td width="15%"><h3>Lounashinta</h3></td>
+                <td width="5%"><h3>Valitse</h3></td>
             </tr>
             <?php foreach ($tulokset as $tuote): ?>
 
@@ -38,6 +41,8 @@ $tulokset = $kysely->fetchAll();
                     <td><?php echo $tuote['kuva'] ?></td>
                     <td><?php echo $tuote['tekstikuvaus'] ?></td>
                     <td><?php echo $tuote['tyyppi'] ?></td>
+                    <td><?php echo $tuote['hinta'] ?></td>
+                    <td><?php echo $tuote['lounashinta'] ?></td>
                     <td><input type="hidden" name="lista[]" value= "<?php echo $tuote['tuoteid']?>">
                         <select name="maara[]">
                             <option value="0"> 0
@@ -52,6 +57,7 @@ $tulokset = $kysely->fetchAll();
                             <option value="9"> 9
                             <option value="10"> 10
                     </td>
+                    
                     
               
             </tr>
