@@ -7,7 +7,9 @@ $yhteys = getTietokanta();
 $id = $_GET["id"];
 $tuote = NULL;
 if ($id != NULL) {
-    $kysely = $yhteys->prepare("select * from tuote where tuoteid = $id");
+    $kysely = $yhteys->prepare("select t.*, h.hinta as lounashinta, hh.hinta from tuote t join hinta h on h.tuoteid = t.tuoteid and h.onkolounas = true
+join hinta hh on hh.tuoteid = t.tuoteid and hh.onkolounas = false
+where t.tuoteid = $id");
     $kysely->execute();
 
     $tuote = $kysely->fetch();
@@ -43,6 +45,15 @@ if ($id != NULL) {
                             <option value="kebab"> kebab
                             <option value="muu"> muu
                                 </td>
+                                </tr>
+                                <tr>
+                    <td>Normaali hinta </td> 
+                    <td> <input type="text" name="hinta" value="<?php echo $tuote['hinta'] ?>" </td>
+                </tr>
+                <tr>
+                    <td><?php echo Lounashinta ?> </td> 
+                    <td> <input type="text" name="lounashinta" value="<?php echo $tuote['lounashinta'] ?>" </td>
+                </tr>
 
                             <tr>
                                 <td> <input type="submit" value="Tallenna" </td>

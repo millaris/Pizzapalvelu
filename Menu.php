@@ -3,7 +3,8 @@ require_once "tietokanta.php";
 
 $yhteys = getTietokanta();
 
-$kysely = $yhteys->prepare("select * from tuote");
+$kysely = $yhteys->prepare("select t.*, h.hinta as lounashinta, hh.hinta from tuote t join hinta h on h.tuoteid = t.tuoteid and h.onkolounas = true
+join hinta hh on hh.tuoteid = t.tuoteid and hh.onkolounas = false");
 $kysely->execute();
 $kysely2 = $yhteys->prepare("select * from lisuke");
 $kysely2->execute();
@@ -23,10 +24,12 @@ $lisuke = $kysely2->fetchAll();
         <table width ="80%">
             <tr>
             
-                <td width="25%"><h3>Nimi</h3></td> 
-                <td width="25%"><h3>Kuva</h3></td>
+                <td width="15%"><h3>Nimi</h3></td> 
+                <td width="10%"><h3>Kuva</h3></td>
                 <td width="25%"><h3>Tekstikuvaus</h3></td>
-                <td width="25%"><h3>Tyyppi</h3></td>
+                <td width="15%"><h3>Tyyppi</h3></td>
+                <td width="17.5%"><h3>Normaali hinta</h3></td>
+                <td width="17.5%"><h3>Lounashinta</h3></td>
            
 
             </tr>
@@ -38,6 +41,8 @@ $lisuke = $kysely2->fetchAll();
                     <td><?php echo $tuote['kuva'] ?></td>
                     <td><?php echo $tuote['tekstikuvaus'] ?></td>
                     <td><?php echo $tuote['tyyppi'] ?></td>
+                    <td><?php echo $tuote['hinta'] ?></td>
+                    <td><?php echo $tuote['lounashinta'] ?></td>
 
                 </tr>
 <?php endforeach; ?>
