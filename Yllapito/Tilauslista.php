@@ -45,7 +45,7 @@ $tulokset = $kysely->fetchAll();
             <?php foreach ($tulokset as $tu): ?>
 
                 <tr>
-                    <td><?php echo $tu['tilausnro'] ?></td>
+                    <td><a href=TilauksenTiedot.php?id=<?php echo $tu['tilausnro'] ?>"><?php echo $tu['tilausnro'] ?></a></td>
                     <td><?php echo $tu['asiakasnro'] ?></td>
                     <td><?php echo $tu['toimitusaika'] ?></td>
                     <td><?php echo $tu['osoite'] ?></td>
