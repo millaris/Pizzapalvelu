@@ -25,15 +25,15 @@ $yhteys = getTietokanta();
             </tr>
             <tr>
                 <td>Osoite</td>
-                <td><input type="text" name="osoite" value="<?php echo $asiakas['osoite']; ?>"</td>
+                <td><?php echo $asiakas['osoite']; ?></td>
             </tr>
             <tr>
                 <td>Postinumero</td>
-                <td><input type="text" name="postinumero" value="<?php echo $asiakas['postinumero']; ?>"</td>
+                <td><?php echo $asiakas['postinumero']; ?></td>
             </tr>
             <tr>
                 <td>Kaupunki</td>
-                <td><input type="text" name="kaupunki" value="<?php echo $asiakas['kaupunki']; ?>"</td>
+                <td><?php echo $asiakas['kaupunki']; ?></td>
             </tr>
            
             
@@ -41,4 +41,65 @@ $yhteys = getTietokanta();
         
 
     </body>
+</html>
+<?php
+$kysely = $yhteys->prepare("select Tilausnro, Toimitusaika, osoite, postinumero, kaupunki, kokonaishinta
+    from Tilaus
+    where Asiakasnro =$asiakasnro");
+$kysely->execute();
+
+$tulokset = $kysely->fetchAll();
+
+
+
+?>
+
+<html>
+    <head>
+        <title>Tilauslista</title>
+    </head>
+    <body>
+        <h1>Kaikki tilaukset</h1>
+        <table>
+            <tr>
+                <td>Tilausnro</td>
+                <td>Toimitusaika</td>
+                <td>Osoite</td>
+                <td>Postinumero</td>
+                <td>Kaupunki</td>
+                <td>Kokonaishinta</td>
+                
+            </tr>
+            <?php foreach ($tulokset as $tu): ?>
+
+                <tr>
+                    <td><a href="TilauksenTiedot.php?id=<?php echo $tu['tilausnro'] ?>"><?php echo $tu['tilausnro'] ?></a></td>
+                  
+                    <td><?php echo $tu['toimitusaika'] ?></td>
+                    <td><?php echo $tu['osoite'] ?></td>
+                    <td><?php echo $tu['postinumero'] ?></td>
+                    <td><?php echo $tu['kaupunki'] ?></td>
+                    <td><?php echo $tu['kokonaishinta'] ?></td>
+                    <?php 
+                    $date = $tu['toimitusaika'];
+                    $date->add(new DateInterval('H1'));
+                    if($date > getdate()){
+                    ?>
+                    
+                        <td><a href="TilauksenTiedot.php?id=$tu['tilausnro']">peruuta tilaus </a></td>;
+                    <?php
+                    }
+                   ?>
+                   
+                    
+                </tr>
+            <?php endforeach; ?>
+        </table>
+        <br>
+        
+        <a href="Etusivu.php">Etusivulle</a>
+        
+
+    </body>
+
 </html>

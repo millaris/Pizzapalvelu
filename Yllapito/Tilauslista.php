@@ -8,6 +8,11 @@ $yhteys = getTietokanta();
 $deleteid = $_GET["deleteid"];
 
 if($deleteid != NULL){
+    $kysely3 = $yhteys->prepare("DELETE FROM Tuotteenlisukkeet WHERE tilatutid in 
+            (select tilatutid from tilatuttuotteet tt where $deleteid = tilausnro)");
+    $kysely3->execute();
+    $kysely3 = $yhteys->prepare("DELETE FROM TilatutTuotteet WHERE $deleteid = tilausnro");
+    $kysely3->execute();
     $kysely3 = $yhteys->prepare("DELETE FROM Tilaus WHERE $deleteid = tilausnro");
     $kysely3->execute();
 }

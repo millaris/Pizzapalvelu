@@ -36,6 +36,10 @@
          <td><a href="Kirjautuminen.php">Kirjaudu sisään</a></td>
          <td colspan="3"></td>
       </tr>
+      <tr>
+         <td><a href="Asiakassivu.php">Asiakassivu</a></td>
+         <td colspan="3"></td>
+      </tr>
          <tr>
          <td><a href="Yritysinfo.php">Yritysinfo</a></td>
          <td colspan="3"></td>
