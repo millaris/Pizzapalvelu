@@ -133,13 +133,13 @@ $kokonaispizzahintalounas = 0;
                 <td><input type="text" name="kaupunki" value="<?php echo $asiakas['kaupunki']; ?>"</td>
             </tr>
             <tr>
-                <td>Date</td>
+                <td>Päivämäärä</td>
                 <td><input type="text" name="day" maxlength="2" size="2">-
                     <input type="text" name="month" maxlength="2" size="2">-
                     <input type="text" name="year" value="2012"  maxlength="4" size="4"></td>
             </tr>
             <tr>
-                <td>Time</td>
+                <td>Aika</td>
                 <td><input type="text" name="hours" maxlength="2" size="2">-
                     <input type="text" name="minutes" maxlength="2" size="2"></td>
             </tr>
