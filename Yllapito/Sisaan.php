@@ -7,7 +7,7 @@ $salasana = $_POST["salasana"];
 
 if($kayttajatunus == "admin12" && $salasana == "admin21"){
     $_SESSION["kayttajatunus"] = $kayttajatunus;
-        header("Location: Lisukelista.php");
+        header("Location: Etusivu.php");
         die();
 }
 

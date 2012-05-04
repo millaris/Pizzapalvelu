@@ -7,7 +7,7 @@ $yhteys = getTietokanta();
 
 $lista = unserialize($_POST["lista"]);
 $pizza = unserialize($_POST["pizza"]);
-$pizzanimi = unserialize($_POST["pizzanimi"]);
+
 $hinta = $_POST["hinta"];
 $lounas = $_POST["lounas"];
 $osoite = $_POST["osoite"];
