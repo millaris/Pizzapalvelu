@@ -108,6 +108,11 @@ $kokonaispizzahintalounas = 0;
             <input type="hidden" name="asiakasnro" value="<?php echo $asiakasnro ?>">
         <table>
             <tr>
+                <td colspan ="2">
+                    Toimitusosoite:
+                </td>
+            </tr>
+            <tr>
                 <td>Nimi</td>
                 <td><?php echo $asiakas['nimi']; ?></td>
             </tr>

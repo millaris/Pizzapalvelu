@@ -15,9 +15,9 @@ if($id != NULL){
             left join Lisuke li on li.lisukeid = tl.lisukeid
             WHERE tt.tilausnro= $id
             order by tt.tilatutID");
-    $kysely3->execute();
+    $kysely3->execute()
+            ;
     $info = $kysely3->fetchAll();
-    $luku = 1;
     $lastTilatutId = 0;
     foreach ($info as $item){
         

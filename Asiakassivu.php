@@ -6,6 +6,14 @@ require_once "tietokanta.php";
 
 $yhteys = getTietokanta();
 
+$peruutaid = $_GET["peruutaid"];
+
+if($peruutaid != NULL){
+    
+    $kysely3 = $yhteys->prepare("UPDATE Tilaus SET Peruutus = TRUE WHERE $peruutaid = tilausnro");
+    $kysely3->execute();
+}
+
             $asiakasnro = $_SESSION["kayttaja"];
             $kysely2 = $yhteys->prepare("select * from Asiakas WHERE Asiakasnro = $asiakasnro");
             $kysely2->execute();
@@ -13,6 +21,9 @@ $yhteys = getTietokanta();
             $asiakas = $kysely2->fetch();
         ?>
 <html>
+    <head>
+            <title>Tilauslista</title>
+    </head>
     <body>
         <table>
             <tr>
@@ -39,11 +50,8 @@ $yhteys = getTietokanta();
             
         </table>
         
-
-    </body>
-</html>
 <?php
-$kysely = $yhteys->prepare("select Tilausnro, Toimitusaika, osoite, postinumero, kaupunki, kokonaishinta
+$kysely = $yhteys->prepare("select Tilausnro, Toimitusaika, osoite, postinumero, kaupunki, kokonaishinta, peruutus
     from Tilaus
     where Asiakasnro =$asiakasnro");
 $kysely->execute();
@@ -54,11 +62,9 @@ $tulokset = $kysely->fetchAll();
 
 ?>
 
-<html>
-    <head>
-        <title>Tilauslista</title>
-    </head>
-    <body>
+   
+  
+    
         <h1>Kaikki tilaukset</h1>
         <table>
             <tr>
@@ -70,7 +76,10 @@ $tulokset = $kysely->fetchAll();
                 <td>Kokonaishinta</td>
                 
             </tr>
-            <?php foreach ($tulokset as $tu): ?>
+            <?php foreach ($tulokset as $tu){
+             if($tu['peruutus'] == !TRUE){ 
+                    
+                    ?>
 
                 <tr>
                     <td><a href="TilauksenTiedot.php?id=<?php echo $tu['tilausnro'] ?>"><?php echo $tu['tilausnro'] ?></a></td>
@@ -82,18 +91,23 @@ $tulokset = $kysely->fetchAll();
                     <td><?php echo $tu['kokonaishinta'] ?></td>
                     <?php 
                     $date = $tu['toimitusaika'];
-                    $date->add(new DateInterval('H1'));
-                    if($date > getdate()){
+                    $tunninpaasta = date("Y-m-d H:i:s",time()+60*60);
+                    if($date > $tunninpaasta){
                     ?>
                     
-                        <td><a href="TilauksenTiedot.php?id=$tu['tilausnro']">peruuta tilaus </a></td>;
+                        <td><a href="Asiakassivu.php?peruutaid=<?php echo $tu['tilausnro'] ?>">peruuta tilaus </a></td>;
                     <?php
                     }
+                
                    ?>
                    
-                    
                 </tr>
-            <?php endforeach; ?>
+                
+            <?php 
+            
+             }
+             
+             }; ?>
         </table>
         <br>
         
@@ -101,5 +115,6 @@ $tulokset = $kysely->fetchAll();
         
 
     </body>
+
 
 </html>
